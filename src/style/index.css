@@ -1,3 +1,4 @@
+/* Tailwind: base (resets), components, utilities. Customizations in @layer base and custom class .dropdown-trigger. */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

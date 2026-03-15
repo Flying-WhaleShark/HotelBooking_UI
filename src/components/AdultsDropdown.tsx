@@ -5,6 +5,9 @@ import { Menu } from '@headlessui/react';
 
 /**
  * Dropdown to select number of adults. Uses Headless UI Menu and RoomContext.
+ * - Menu.Button shows current adults; chevron rotates 180° when open (CSS .dropdown-chevron).
+ * - Menu.Items: transition + data-[closed] for open/close animation; modal={false} keeps focus in page.
+ * - Clicking an option calls setAdults(name) and updates context for room filtering.
  */
 export default function AdultsDropdown() {
   const { adults, setAdults } = useRoomContext();

@@ -5,11 +5,14 @@ import { LogoWhite, LogoDark } from '../assets';
 
 /**
  * Fixed header with logo and nav. Background switches to white on scroll (header state).
+ * - resetRoomFilterData: clearing filter when user clicks logo so Home shows all rooms again.
+ * - header: true when scrollY > 50; toggles bg-white + LogoDark vs transparent + LogoWhite, and nav text color.
  */
 export default function Header() {
   const { resetRoomFilterData } = useRoomContext();
   const [header, setHeader] = useState(false);
 
+  // Update header style when user scrolls past 50px.
   useEffect(() => {
     const handler = () => setHeader(window.scrollY > 50);
     window.addEventListener('scroll', handler);

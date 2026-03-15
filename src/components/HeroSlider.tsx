@@ -5,7 +5,8 @@ import 'swiper/css/effect-fade';
 import 'swiper/css';
 
 /**
- * Hero carousel using Swiper: fade effect and autoplay. Data from sliderData.
+ * Hero carousel using Swiper: fade effect and autoplay. Data from sliderData (id, title, bg image, btnNext).
+ * Each slide: background image full-cover, dark overlay (bg-black/70), centered title + CTA button.
  */
 export default function HeroSlider() {
   return (

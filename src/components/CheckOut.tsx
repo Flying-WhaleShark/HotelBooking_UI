@@ -4,11 +4,16 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "../style/datepicker.css";
 
+/** CheckOut datepicker props: same as CheckIn (placement + optional full-width). */
 type CheckOutProps = {
   popperPlacement?: "bottom-start" | "bottom-end";
   popperFullWidth?: boolean;
 };
 
+/**
+ * Check-out date field: same behavior as CheckIn but with id "checkout" for single-calendar coordination.
+ * Opening this calendar dispatches DATEPICKER_OPEN so CheckIn closes; and vice versa.
+ */
 export default function CheckOut({
   popperPlacement = "bottom-start",
   popperFullWidth = false,
@@ -20,6 +25,7 @@ export default function CheckOut({
   const DATEPICKER_OPEN = "datepicker-open";
   const ID = "checkout";
 
+  // Close when clicking outside.
   useEffect(() => {
     if (!isOpen) return;
     const handler = (e: MouseEvent) => {
@@ -31,6 +37,7 @@ export default function CheckOut({
     return () => document.removeEventListener("mousedown", handler);
   }, [isOpen]);
 
+  // When CheckIn opens, this calendar closes (and vice versa).
   useEffect(() => {
     const onOtherOpen = (e: Event) => {
       if ((e as CustomEvent<{ id: string }>).detail?.id !== ID) setIsOpen(false);
@@ -48,6 +55,7 @@ export default function CheckOut({
     };
   }, [popperFullWidth, isOpen]);
 
+  // Icon toggle: same pattern as CheckIn (suppress + dispatch).
   const handleIconClick = () => {
     suppressOpenRef.current = true;
     setIsOpen((o) => {

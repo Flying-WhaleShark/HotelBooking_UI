@@ -1,3 +1,4 @@
+// Image and logo imports: room thumbnails + large images, hero slider backgrounds, SVG logos (via ?react for SVGR).
 import Room1Img from './img/rooms/1.png';
 import Room2Img from './img/rooms/2.png';
 import Room3Img from './img/rooms/3.png';

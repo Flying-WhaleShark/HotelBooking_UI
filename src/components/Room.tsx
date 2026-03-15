@@ -7,7 +7,8 @@ interface RoomProps {
 }
 
 /**
- * Single room card: image, size/maxPerson, name, description snippet, price link.
+ * Single room card: image (hover scale), size/maxPerson strip, name, short description, "Book now from $price" link.
+ * Links to /room/:id for details. Used in a grid by Rooms component.
  */
 export default function Room({ room }: RoomProps) {
   const { id, name, image, size, maxPerson, description, price } = room;

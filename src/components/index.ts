@@ -1,3 +1,4 @@
+// Barrel file: export all UI components and ScrollToTop for clean imports (e.g. from './components').
 export { default as AdultsDropdown } from './AdultsDropdown';
 export { default as PageNotFound } from './PageNotFound';
 export { default as KidsDropdown } from './KidsDropdown';

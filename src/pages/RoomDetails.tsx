@@ -12,8 +12,9 @@ import { FaCheck } from "react-icons/fa";
 import type { Facility } from "../types";
 
 /**
- * Room detail page: hero, description, facilities, reservation form, hotel rules.
- * Room is resolved from URL param :id and context rooms list.
+ * Room detail page: hero, description, facilities grid, reservation sidebar (dates + guests), hotel rules.
+ * Room is resolved from URL param :id via useParams(); we look up in context rooms (so filtered list applies).
+ * If room not found (e.g. bad id or filtered out), we show "Room not found." CheckIn/CheckOut use popperFullWidth here.
  */
 export default function RoomDetails() {
   const { id } = useParams<{ id: string }>();
@@ -56,6 +57,7 @@ export default function RoomDetails() {
                 nostrum? Reiciendis illum dolor eos dicta. Illum vero at hic
                 nostrum sint et quod porro.
               </p>
+              {/* Facilities grid: icon + name from room.facilities (e.g. Wifi, Coffee, Bath). */}
               <div className="grid grid-cols-3 gap-6 mb-12">
                 {facilities.map((item: Facility, index: number) => {
                   const Icon = item.icon;
@@ -74,6 +76,7 @@ export default function RoomDetails() {
               </div>
             </div>
           </div>
+          {/* Sidebar: reservation form (dates + guests) and hotel rules. */}
           <div className="w-full lg:max-w-xs h-full">
             <div className="py-8 px-6 bg-accent/20 mb-12 w-full">
               <div className="flex flex-col space-y-4 mb-4 w-full">

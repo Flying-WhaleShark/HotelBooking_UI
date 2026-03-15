@@ -3,7 +3,8 @@ import { SpinnerDotted } from 'spinners-react';
 import Room from './Room';
 
 /**
- * Room grid with loading overlay. Lists rooms from RoomContext (filtered by capacity when user checks).
+ * Room grid with loading overlay. Lists rooms from RoomContext (filtered by capacity when user clicks "Check Now").
+ * When loading is true, a full-screen overlay with SpinnerDotted is shown; grid uses responsive cols (1 on mobile, 3 on lg).
  */
 export default function Rooms() {
   const { rooms, loading } = useRoomContext();

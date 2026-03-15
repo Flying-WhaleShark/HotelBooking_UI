@@ -3,6 +3,8 @@ import { useRoomContext } from '../context/RoomContext';
 
 /**
  * Booking form: check-in/out dates and guest counts. Submit triggers room filter (handleCheck).
+ * Layout: stacked on mobile (flex-col), single row on lg (flex-row). Each field is flex-1 with border-r.
+ * "Check Now" calls context handleCheck(e) which filters rooms by total guests and shows loading spinner.
  */
 export default function BookForm() {
   const { handleCheck } = useRoomContext();

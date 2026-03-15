@@ -4,11 +4,18 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "../style/datepicker.css";
 
+/** CheckIn datepicker props: placement of calendar popover and optional full-width in container. */
 type CheckInProps = {
   popperPlacement?: "bottom-start" | "bottom-end";
   popperFullWidth?: boolean;
 };
 
+/**
+ * Check-in date field: react-datepicker with calendar icon toggle and single-calendar coordination.
+ * - Only one of CheckIn/CheckOut can be open at a time (custom event DATEPICKER_OPEN with id "checkin").
+ * - suppressOpenRef prevents the lib's open logic from re-opening right after we close (e.g. on icon click).
+ * - popperFullWidth: sets CSS var --datepicker-popper-width so calendar spans the wrapper (e.g. Room Details).
+ */
 export default function CheckIn({
   popperPlacement = "bottom-start",
   popperFullWidth = false,
@@ -20,6 +27,7 @@ export default function CheckIn({
   const DATEPICKER_OPEN = "datepicker-open";
   const ID = "checkin";
 
+  // Close when clicking outside the wrapper (mousedown so it runs before focus moves).
   useEffect(() => {
     if (!isOpen) return;
     const handler = (e: MouseEvent) => {
@@ -31,6 +39,7 @@ export default function CheckIn({
     return () => document.removeEventListener("mousedown", handler);
   }, [isOpen]);
 
+  // When the other datepicker (CheckOut) opens, this one closes so only one calendar is visible.
   useEffect(() => {
     const onOtherOpen = (e: Event) => {
       if ((e as CustomEvent<{ id: string }>).detail?.id !== ID) setIsOpen(false);
@@ -39,6 +48,7 @@ export default function CheckIn({
     return () => document.removeEventListener(DATEPICKER_OPEN, onOtherOpen);
   }, []);
 
+  // For Room Details: set --datepicker-popper-width so full-width calendar matches wrapper width.
   useLayoutEffect(() => {
     if (!popperFullWidth || !isOpen) return;
     const w = wrapperRef.current?.offsetWidth;
@@ -48,6 +58,7 @@ export default function CheckIn({
     };
   }, [popperFullWidth, isOpen]);
 
+  // Icon toggle: set suppress so datepicker's onInputClick doesn't re-open; dispatch so CheckOut closes.
   const handleIconClick = () => {
     suppressOpenRef.current = true;
     setIsOpen((o) => {
@@ -59,6 +70,7 @@ export default function CheckIn({
     }, 200);
   };
 
+  // Open from input/calendar: only if not suppressed; notify others so they close.
   const handleOpen = () => {
     if (suppressOpenRef.current) return;
     document.dispatchEvent(new CustomEvent(DATEPICKER_OPEN, { detail: { id: ID } }));
@@ -69,6 +81,7 @@ export default function CheckIn({
     setIsOpen(false);
   };
 
+  // On date select: update state, close calendar, briefly suppress to avoid re-open.
   const handleChange = (date: Date | null) => {
     setStartDate(date);
     suppressOpenRef.current = true;

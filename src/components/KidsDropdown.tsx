@@ -4,7 +4,8 @@ import { kidsList } from '../data';
 import { Menu } from '@headlessui/react';
 
 /**
- * Dropdown to select number of kids. Uses Headless UI Menu and RoomContext.
+ * Dropdown to select number of kids. Same pattern as AdultsDropdown: Headless UI Menu + RoomContext.
+ * Displays "No Kid" when kids === '0 Kid'; otherwise shows the selected option (e.g. "2 Kids").
  */
 export default function KidsDropdown() {
   const { kids, setKids } = useRoomContext();

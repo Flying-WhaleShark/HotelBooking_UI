@@ -4,6 +4,9 @@ import { Home, RoomDetails } from './pages';
 
 /**
  * Root app: router with Header/Footer and routes for Home, RoomDetails, and 404.
+ * - BrowserRouter enables client-side routing (no full page reload on nav).
+ * - future flags prepare for React Router v7 behavior (startTransition, relative splat paths).
+ * - Header/Footer render on every route; Routes swap the main content by path.
  */
 function App() {
   return (

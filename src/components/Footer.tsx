@@ -1,5 +1,9 @@
 import { LogoWhite } from "../assets";
 
+/**
+ * Site footer: dark background (bg-primary), logo link to home, dynamic year in copyright.
+ * Layout: stacked on small screens, row with space-between on sm+.
+ */
 export default function Footer() {
   return (
     <footer className="bg-primary py-12">

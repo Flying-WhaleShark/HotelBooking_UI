@@ -1,6 +1,6 @@
 import type { Room } from './room';
 
-/** Room context state and actions exposed to consumers */
+/** Room context state and actions exposed to consumers via useRoomContext(). */
 export interface RoomContextValue {
   rooms: Room[];
   loading: boolean;

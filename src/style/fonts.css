@@ -1,4 +1,4 @@
-/* Self-hosted fonts (files in public/fonts). Run: node scripts/download-fonts.js */
+/* Self-hosted fonts (files in public/fonts). Run: npm run fonts (scripts/download-fonts.cjs). Tailwind uses these via tailwind.config.cjs fontFamily. */
 
 @font-face {
   font-family: 'Gilda Display';

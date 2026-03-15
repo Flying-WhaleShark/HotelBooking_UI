@@ -2,6 +2,7 @@ import { BookForm, HeroSlider, Rooms, ScrollToTop } from '../components';
 
 /**
  * Home page: hero slider, booking form overlay, and room grid (filtered by guest count when user clicks Check Now).
+ * BookForm sits in a strip that overlaps the hero on large screens (lg:absolute lg:-top-12); Rooms shows the grid below.
  */
 export default function Home() {
   return (
