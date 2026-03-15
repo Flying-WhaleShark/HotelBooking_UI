@@ -76,10 +76,21 @@
   .heroSlider {
     min-height: 860px;
   }
+  }
 }
 
 /* Dropdown chevron: smooth 180° rotation when open */
 .dropdown-trigger[aria-expanded="true"] .dropdown-chevron {
   transform: rotate(180deg);
 }
+
+/* Remove browser default focus outline/ring from dropdown (use only custom border-accent/20) */
+.dropdown-panel:focus,
+.dropdown-panel:focus-visible,
+.dropdown-panel *:focus,
+.dropdown-panel *:focus-visible,
+.dropdown-trigger:focus,
+.dropdown-trigger:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
 }
