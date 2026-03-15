@@ -72,8 +72,13 @@
     min-height: 600px;
   }
   @media (min-width: 960px) {
-    .heroSlider {
-      min-height: 860px;
-    }
+  .heroSlider {
+    min-height: 860px;
   }
+}
+
+/* Dropdown chevron: smooth 180° rotation when open */
+.dropdown-trigger[aria-expanded="true"] .dropdown-chevron {
+  transform: rotate(180deg);
+}
 }

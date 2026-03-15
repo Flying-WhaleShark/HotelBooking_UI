@@ -4,12 +4,12 @@ import {
   CheckOut,
   KidsDropdown,
   ScrollToTop,
-} from '../components';
-import { useRoomContext } from '../context/RoomContext';
-import { hotelRules } from '../data';
-import { useParams } from 'react-router-dom';
-import { FaCheck } from 'react-icons/fa';
-import type { Facility } from '../types';
+} from "../components";
+import { useRoomContext } from "../context/RoomContext";
+import { hotelRules } from "../data";
+import { useParams } from "react-router-dom";
+import { FaCheck } from "react-icons/fa";
+import type { Facility } from "../types";
 
 /**
  * Room detail page: hero, description, facilities, reservation form, hotel rules.
@@ -24,7 +24,7 @@ export default function RoomDetails() {
     return (
       <section>
         <ScrollToTop />
-        <div className="container mx-auto py-24 text-center">
+        <div className="container mx-auto max-w-7xl py-24 text-center">
           <p>Room not found.</p>
         </div>
       </section>
@@ -38,26 +38,32 @@ export default function RoomDetails() {
       <ScrollToTop />
       <div className="bg-room h-[560px] relative flex justify-center items-center bg-cover bg-center">
         <div className="absolute w-full h-full bg-black/70" />
-        <h1 className="text-6xl text-white z-20 font-primary text-center">{name} Details</h1>
+        <h1 className="text-6xl text-white z-20 font-primary text-center">
+          {name} Details
+        </h1>
       </div>
-      <div className="container mx-auto">
+      <div className="container mx-auto max-w-7xl">
         <div className="flex flex-col lg:flex-row lg:gap-x-8 h-full py-24">
-          <div className="w-full lg:w-[60%] h-full text-justify">
+          <div className="w-full h-full text-justify">
             <h2 className="h2">{name}</h2>
             <p className="mb-8">{description}</p>
-            <img className="mb-8" src={imageLg} alt={name} />
+            <img className="mb-8 w-full" src={imageLg} alt={name} />
             <div className="mt-12">
               <h3 className="h3 mb-3"></h3>
               <p className="mb-12">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis accusantium
-                sapiente quas quos explicabo, odit nostrum? Reiciendis illum dolor eos dicta. Illum
-                vero at hic nostrum sint et quod porro.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Blanditiis accusantium sapiente quas quos explicabo, odit
+                nostrum? Reiciendis illum dolor eos dicta. Illum vero at hic
+                nostrum sint et quod porro.
               </p>
               <div className="grid grid-cols-3 gap-6 mb-12">
                 {facilities.map((item: Facility, index: number) => {
                   const Icon = item.icon;
                   return (
-                    <div key={index} className="flex items-center gap-x-3 flex-1">
+                    <div
+                      key={index}
+                      className="flex items-center gap-x-3 flex-1"
+                    >
                       <div className="text-3xl text-accent">
                         <Icon />
                       </div>
@@ -68,15 +74,15 @@ export default function RoomDetails() {
               </div>
             </div>
           </div>
-          <div className="w-full lg:w-[40%] h-full">
+          <div className="w-full lg:max-w-xs h-full">
             <div className="py-8 px-6 bg-accent/20 mb-12 w-full">
               <div className="flex flex-col space-y-4 mb-4 w-full">
                 <h3>Your Reservation</h3>
                 <div className="h-[60px] w-full">
-                  <CheckIn />
+                  <CheckIn popperPlacement="bottom-end" popperFullWidth />
                 </div>
                 <div className="h-[60px] w-full">
-                  <CheckOut />
+                  <CheckOut popperPlacement="bottom-end" popperFullWidth />
                 </div>
                 <div className="h-[60px] w-full">
                   <AdultsDropdown />
@@ -92,9 +98,9 @@ export default function RoomDetails() {
             <div>
               <h3 className="h3">Hotel Rules</h3>
               <p className="mb-6 text-justify">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dolores iure fugiat
-                eligendi illo est, aperiam quasi distinctio necessitatibus suscipit nemo provident
-                eaque voluptas earum.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
+                dolores iure fugiat eligendi illo est, aperiam quasi distinctio
+                necessitatibus suscipit nemo provident eaque voluptas earum.
               </p>
               <ul className="flex flex-col gap-y-4">
                 {hotelRules.map(({ rules }, idx) => (

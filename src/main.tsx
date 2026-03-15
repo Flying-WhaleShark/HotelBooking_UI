@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
 import { RoomContext } from './context/RoomContext';
+import './style/fonts.css';
 import './style/index.css';
 
 const rootEl = document.getElementById('root');

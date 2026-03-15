@@ -11,17 +11,22 @@ export default function KidsDropdown() {
 
   return (
     <Menu as="div" className="w-full h-full bg-white relative">
-      <Menu.Button className="w-full h-full flex items-center justify-between px-8">
+      <Menu.Button className="dropdown-trigger w-full h-full flex items-center justify-between px-8 outline-none focus:outline-none focus:ring-0 focus-visible:ring-0 border-0 focus:border-0">
         {kids === '0 Kid' ? 'No Kid' : kids}
-        <BsChevronDown className="text-base text-accent-hover" />
+        <BsChevronDown className="dropdown-chevron text-base text-accent-hover transition-transform duration-200 ease-out" />
       </Menu.Button>
-      <Menu.Items as="ul" className="bg-white absolute w-full flex flex-col z-40" modal={false}>
+      <Menu.Items
+        as="ul"
+        transition
+        className="bg-white absolute w-full flex flex-col z-40 border border-accent/20 shadow-md transition ease-out duration-200 data-[closed]:scale-95 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150"
+        modal={false}
+      >
         {kidsList.map(({ name }, idx) => (
           <Menu.Item
             as="li"
             key={idx}
             onClick={() => setKids(name)}
-            className="border-b last-of-type:border-b-0 h-10 hover:bg-accent hover:text-white w-full flex items-center justify-center cursor-pointer"
+            className="h-10 hover:bg-accent hover:text-white w-full flex items-center justify-center cursor-pointer border-b border-gray-200 last:border-b-0"
           >
             {name}
           </Menu.Item>

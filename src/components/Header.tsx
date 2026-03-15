@@ -23,7 +23,7 @@ export default function Header() {
       className={`fixed z-50 w-full min-h-[72px] py-6 transition-colors duration-300 
       ${header ? 'bg-white shadow-lg' : 'bg-transparent'}`}
     >
-      <div className="container mx-auto flex flex-col lg:flex-row items-center lg:justify-between gap-y-6 lg:gap-y-0 h-full">
+      <div className="container mx-auto max-w-7xl flex flex-col lg:flex-row items-center lg:justify-between gap-y-6 lg:gap-y-0 h-full">
         <Link to="/" onClick={resetRoomFilterData} className="block w-[160px] shrink-0" aria-label="Home">
           {header ? (
             <LogoDark className="w-[160px] h-auto block" />

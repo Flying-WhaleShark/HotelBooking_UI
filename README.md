@@ -1,6 +1,6 @@
 # Hotel Booking Landing Page - React, Vite, TypeScript, TailwindCSS Frontend Project
 
-- **Live Demo:** []()
+- **Live Demo:** [https://hotel-booking-ui-2.vercel.app/](https://hotel-booking-ui-2.vercel.app/)
 
 ## Table of Contents
 
