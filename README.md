@@ -133,7 +133,7 @@ A **React + Vite + TypeScript** hotel booking UI with **TailwindCSS** for stylin
 If you later add a backend or feature flags, you can use Vite’s env support:
 
 - Create `.env` (or `.env.local`) in the project root.
-- Define variables with the `VITE_` prefix so they are exposed to the client, e.g. `VITE_API_URL=https://api.example.com`.
+- Define variables with the `VITE_` prefix so they are exposed to the client, e.g. `VITE_API_URL=https://hotelbooking-api-mqyr.onrender.com/api`.
 - Access them in code as `import.meta.env.VITE_API_URL`.
 - Do not commit secrets; `.env.local` and similar are typically in `.gitignore` (this repo already ignores common env files).
 
@@ -142,7 +142,7 @@ Example (optional, not used in current code):
 ```env
 # Optional — not required for current project
 # VITE_APP_NAME=Hotel Booking
-# VITE_API_URL=https://api.example.com
+# VITE_API_URL=https://hotelbooking-api-mqyr.onrender.com/api
 ```
 
 ---

@@ -15,6 +15,7 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
+        // This can be used only during development, npm run dev
         target: 'http://localhost:8080',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '/api'),
