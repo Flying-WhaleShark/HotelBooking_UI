@@ -1,42 +1,69 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import type { RoomContextValue } from '../types';
 import { roomData } from '../data';
+import { fetchRooms, type ApiRoom } from '../api';
+import type { Room } from '../types';
 
-// Context holds room list, loading, guest counts, and filter/reset actions.
-// Default null; Provider in RoomContext() sets the value.
 const RoomInfo = createContext<RoomContextValue | null>(null);
 
-/**
- * RoomContext provides room list, loading state, guest counts (adults/kids),
- * and check/reset actions. Used for filtering rooms by capacity.
- * - rooms: filtered list (or full roomData after reset).
- * - total: derived from first character of adults + kids strings (e.g. "2 Adults" -> 2).
- * - handleCheck: filters roomData by total <= room.maxPerson, then sets rooms after 3s (simulated loading).
- */
+function mapApiRoom(apiRoom: ApiRoom, defaultFacilities: Room['facilities']): Room {
+  return {
+    id: apiRoom.id,
+    name: apiRoom.name,
+    description: apiRoom.description,
+    facilities: defaultFacilities,
+    size: Math.max(30, apiRoom.capacity * 15),
+    maxPerson: apiRoom.capacity,
+    price: apiRoom.price,
+    image: apiRoom.imageUrl,
+    imageLg: apiRoom.imageUrl,
+  };
+}
+
 export function RoomContext({ children }: { children: ReactNode }) {
-  const [rooms, setRooms] = useState(roomData);
+  const [rooms, setRooms] = useState<Room[]>(roomData);
+  const [initialRooms, setInitialRooms] = useState<Room[]>(roomData);
   const [loading, setLoading] = useState(false);
   const [adults, setAdults] = useState('1 Adult');
   const [kids, setKids] = useState('0 Kid');
   const [total, setTotal] = useState(0);
 
-  // Keep total in sync with adults/kids (e.g. "2 Adults" + "1 Kid" -> total 3).
   useEffect(() => {
     setTotal(+adults[0] + +kids[0]);
   }, [adults, kids]);
 
-  // Restore initial guest counts and show all rooms again.
+  useEffect(() => {
+    const loadRooms = async () => {
+      setLoading(true);
+      try {
+        const apiRooms = await fetchRooms();
+        const mappedRooms = apiRooms.map((apiRoom) =>
+          mapApiRoom(apiRoom, roomData[0]?.facilities ?? []),
+        );
+        setInitialRooms(mappedRooms);
+        setRooms(mappedRooms);
+      } catch (error) {
+        console.warn('Failed to load rooms from API, using local fallback data.', error);
+        setInitialRooms(roomData);
+        setRooms(roomData);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadRooms();
+  }, []);
+
   const resetRoomFilterData = () => {
     setAdults('1 Adult');
     setKids('0 Kid');
-    setRooms(roomData);
+    setRooms(initialRooms);
   };
 
-  // On "Check Now": show spinner, filter rooms by capacity, update list after 3s delay.
   const handleCheck = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const filterRooms = roomData.filter((room) => total <= room.maxPerson);
+    const filterRooms = initialRooms.filter((room) => total <= room.maxPerson);
     setTimeout(() => {
       setLoading(false);
       setRooms(filterRooms);
@@ -58,7 +85,6 @@ export function RoomContext({ children }: { children: ReactNode }) {
 }
 
 /* eslint-disable react-refresh/only-export-components -- context + hook in same file is a common pattern */
-/** Hook to read/write room state and actions. Must be used inside a RoomContext provider. */
 export function useRoomContext(): RoomContextValue {
   const ctx = useContext(RoomInfo);
   if (!ctx) throw new Error('useRoomContext must be used within RoomContext');

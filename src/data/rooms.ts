@@ -30,7 +30,8 @@ const description =
 export const roomData: Room[] = [
   {
     id: 1,
-    name: 'Superior Room',
+    //name: 'Superior Room',
+    name: 'Okinawa Room',
     description,
     facilities: [...facilities],
     size: 30,
@@ -41,7 +42,8 @@ export const roomData: Room[] = [
   },
   {
     id: 2,
-    name: 'Signature Room',
+    //name: 'Signature Room',
+    name: 'Salt Flat Reflection Room',
     description,
     facilities: [...facilities],
     size: 70,
@@ -52,7 +54,8 @@ export const roomData: Room[] = [
   },
   {
     id: 3,
-    name: 'Deluxe Room',
+    //name: 'Deluxe Room',
+    name: 'Cancun Room',
     description,
     facilities: [...facilities],
     size: 50,
@@ -63,7 +66,8 @@ export const roomData: Room[] = [
   },
   {
     id: 4,
-    name: 'Luxury Room',
+    //name: 'Luxury Room',
+    name: 'Sunken Ship Room',
     description,
     facilities: [...facilities],
     size: 50,
@@ -74,7 +78,8 @@ export const roomData: Room[] = [
   },
   {
     id: 5,
-    name: 'Luxury Suite Room',
+    //name: 'Luxury Suite Room',
+    name: 'Bali Island Room',
     description,
     facilities: [...facilities],
     size: 90,
@@ -85,7 +90,8 @@ export const roomData: Room[] = [
   },
   {
     id: 6,
-    name: 'Deluxe Room',
+    //name: 'Deluxe Room',
+    name: 'Mangrove Swamp Room',
     description,
     facilities: [...facilities],
     size: 45,
@@ -96,7 +102,8 @@ export const roomData: Room[] = [
   },
   {
     id: 7,
-    name: 'Luxury Room',
+    //name: 'Luxury Room',
+    name: 'Deep Sea Room',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit.Ea placeat eos sed voluptas unde veniam eligendi a. Quaerat molestiae hic omnis temporibus quos consequuntur nam voluptatum ea ccusamus, corrupti nostrum eum placeat quibusdam quis beatae quae labore earum architecto aliquid debitis.',
     facilities: [...facilities],
@@ -108,7 +115,8 @@ export const roomData: Room[] = [
   },
   {
     id: 8,
-    name: 'Deluxe Room',
+    //name: 'Deluxe Room',
+    name: 'Mediterranean Room',
     description,
     facilities: [...facilities],
     size: 48,
