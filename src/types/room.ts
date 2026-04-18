@@ -10,6 +10,7 @@ export interface Facility {
 export interface Room {
   id: number;
   name: string;
+  summary: string;
   description: string;
   facilities: Facility[];
   size: number;
