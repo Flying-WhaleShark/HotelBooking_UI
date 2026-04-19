@@ -23,8 +23,9 @@ const facilities = [
   { name: 'Drinks', icon: FaCocktail },
 ];
 
-const description =
-  'Lorem ipsum dolor sit amet consectetur adipisicing elit.Ea placeat eos sed voluptas unde veniam eligendi a. Quaerat molestiae hic omnis temporibus quos consequuntur nam voluptatum ea accusamus, corrupti nostrum eum placeat quibusdam quis beatae quae labore earum architecto aliquid debitis.';
+//↓今は使っていない、やけど一旦残す
+//const description =
+// 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Ea placeat eos sed voluptas unde veniam eligendi a. Quaerat molestiae hic omnis temporibus quos consequuntur nam voluptatum ea accusamus, corrupti nostrum eum placeat quibusdam quis beatae quae labore earum architecto aliquid debitis.';
 
 // Static room list: used as initial state in RoomContext and filtered by handleCheck (total <= maxPerson).
 export const roomData: Room[] = [
