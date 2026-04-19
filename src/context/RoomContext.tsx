@@ -10,6 +10,7 @@ function mapApiRoom(apiRoom: ApiRoom, defaultFacilities: Room['facilities']): Ro
   return {
     id: apiRoom.id,
     name: apiRoom.name,
+    summary: apiRoom.summary,
     description: apiRoom.description,
     facilities: defaultFacilities,
     size: Math.max(30, apiRoom.capacity * 15),
