@@ -8,6 +8,7 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 export interface ApiRoom {
   id: number;
   name: string;
+  summary: string;
   description: string;
   price: number;
   imageUrl: string;

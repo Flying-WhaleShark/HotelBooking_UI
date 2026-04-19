@@ -7,11 +7,11 @@ interface RoomProps {
 }
 
 /**
- * Single room card: image (hover scale), size/maxPerson strip, name, short description, "Book now from $price" link.
+ * Single room card: image (hover scale), size/maxPerson strip, name, summary, "Book now from $price" link.
  * Links to /room/:id for details. Used in a grid by Rooms component.
  */
 export default function Room({ room }: RoomProps) {
-  const { id, name, image, size, maxPerson, description, price } = room;
+  const { id, name, image, size, maxPerson, summary, price } = room;
 
   return (
     <div className="bg-white shadow-2xl min-h-[500px] group">
@@ -48,7 +48,7 @@ export default function Room({ room }: RoomProps) {
         <Link to={`/room/${id}`}>
           <h3 className="h3">{name}</h3>
         </Link>
-        <p className="max-w-[300px] mx-auto mb-3 lg:mb-6">{description.slice(0, 56)}..</p>
+        <p className="max-w-[300px] mx-auto mb-3 lg:mb-6">{summary}</p>
       </div>
       <Link
         to={`/room/${id}`}
